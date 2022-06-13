@@ -1,54 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------------
-| URI ROUTING
-| -------------------------------------------------------------------------
-| This file lets you re-map URI requests to specific controller functions.
-|
-| Typically there is a one-to-one relationship between a URL string
-| and its corresponding controller class/method. The segments in a
-| URL normally follow this pattern:
-|
-|	example.com/class/method/id/
-|
-| In some instances, however, you may want to remap this relationship
-| so that a different class/function is called than the one
-| corresponding to the URL.
-|
-| Please see the user guide for complete details:
-|
-|	https://codeigniter.com/user_guide/general/routing.html
-|
-| -------------------------------------------------------------------------
-| RESERVED ROUTES
-| -------------------------------------------------------------------------
-|
-| There are three reserved routes:
-|
-|	$route['default_controller'] = 'welcome';
-|
-| This route indicates which controller class should be loaded if the
-| URI contains no data. In the above example, the "welcome" class
-| would be loaded.
-|
-|	$route['404_override'] = 'errors/page_missing';
-|
-| This route will tell the Router which controller/method to use if those
-| provided in the URL cannot be matched to a valid route.
-|
-|	$route['translate_uri_dashes'] = FALSE;
-|
-| This is not exactly a route, but allows you to automatically route
-| controller and method names that contain dashes. '-' isn't a valid
-| class or method name character, so it requires translation.
-| When you set this option to TRUE, it will replace ALL dashes in the
-| controller and method URI segments.
-|
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
-*/
+/*dashboard*/
+$route['login'] = 'backend/Auth/index';
+$route['forgot-password'] = 'backend/Auth/forgotPassword';
+$route['reset-password']="backend/Auth/resetPassword";
+$route['change-password'] = 'backend/Auth/changePassword';
+$route['logout']='backend/Auth/logout';
+$route['dashboard'] = 'backend/Admin/index';
+
+$route['admins'] = 'backend/Admin/admins';
+$route['admin'] = 'backend/Admin/create';
+$route['profile'] = 'backend/Admin/profile';
+$route['admin/(:any)/delete'] = 'backend/Admin/delete/$1';
+
+$route['certificates'] = 'backend/Certificate/index';
+$route['certificate'] = 'backend/Certificate/create';
+$route['(:any)/certificate'] = 'backend/Certificate/edit/$1';
+$route['certificate/(:any)/delete'] = 'backend/Certificate/delete/$1';
+
+$route['fire-extinguishers'] = 'backend/Fire/index';
+$route['fire-extinguisher'] = 'backend/Fire/create';
+$route['(:any)/fire-extinguisher'] = 'backend/Fire/edit/$1';
+$route['fire-extinguisher/(:any)/delete'] = 'backend/Fire/delete/$1';
+/*dashboard*/
+
+/**api */
+$route['api/certificates'] = "api/Certificate/certificates";
+$route['api/search/certificate'] = "api/Certificate/certificates";
+/**api */
+
 $route['default_controller'] = 'welcome';
-$route['404_override'] = '';
+$route['404_override'] = 'Custom404';
 $route['translate_uri_dashes'] = FALSE;
